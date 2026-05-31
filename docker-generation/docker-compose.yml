@@ -1,0 +1,24 @@
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2
+    ports: ["1883:1883"]
+    volumes: ["./mosquitto.conf:/mosquitto/config/mosquitto.conf:ro"]
+  smarthome-daemon:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    depends_on: [mosquitto]
+    environment:
+      SMARTHOME_AWS_ENABLED: "false"
+      SMARTHOME_LOCAL_MQTT_HOST: mosquitto
+    command: ["python", "smarthome_daemon.py", "--dry-run"]
+  face-service:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    depends_on: [mosquitto]
+    ports: ["5000:5000"]
+    environment:
+      SMARTHOME_AWS_ENABLED: "false"
+      SMARTHOME_LOCAL_MQTT_HOST: mosquitto
+    command: ["python", "face_service.py"]

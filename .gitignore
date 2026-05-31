@@ -1,0 +1,38 @@
+# OS/editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Flutter/Dart
+code/flutter_app/.dart_tool/
+code/flutter_app/build/
+code/flutter_app/.flutter-plugins
+code/flutter_app/.flutter-plugins-dependencies
+code/flutter_app/android/local.properties
+code/flutter_app/android/.gradle/
+code/flutter_app/android/.kotlin/
+
+# Android/Gradle
+*.jks
+*.keystore
+*.apk
+*.aab
+
+# Local generated artifacts
+smarthome-final.tar
+*.log
+
+# Real deployment secrets. Placeholder cert files in assets/certs are intentional.
+code/raspberry_pi/certs/*.pem
+code/raspberry_pi/certs/*.crt
+code/raspberry_pi/certs/*.key
+!code/raspberry_pi/certs/README_CERTS.md
+*.env
